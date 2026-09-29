@@ -7,7 +7,7 @@ Quem opera aponta o DNS e emite o certificado. Os scripts preparam a máquina e 
 1. Repositório: https://github.com/HenriqueFStephan/renatasobralpsicologa — código em `main`.
 2. Entre na instância como `ubuntu`, copie `scripts/bootstrap_lightsail.sh` e rode: `sudo bash bootstrap_lightsail.sh`.
 3. DNS, na zona Lightsail do domínio: registro A de `renatasobralpsicologa.com.br` e de `www` para `54.232.149.254`. Nada além disso. A zona já está nos nameservers Amazon; em 29 set 2026 o apex ainda não tinha registro A e `www` não existia.
-4. Quando o DNS responder: `sudo apt-get install -y certbot python3-certbot-nginx` e `sudo certbot --nginx -d renatasobralpsicologa.com.br -d www.renatasobralpsicologa.com.br`.
+4. O workflow pede o certificado na primeira publicação, quando o DNS já aponta para a instância. O comando manual, se precisar repetir: `sudo certbot --nginx -d renatasobralpsicologa.com.br -d www.renatasobralpsicologa.com.br`.
 5. No GitHub, Actions secrets: `LIGHTSAIL_HOST` (o IP ou o hostname), `LIGHTSAIL_SSH_KEY` (chave privada do usuário `ubuntu`), `CURSOR_API_KEY`.
 6. No servidor, edite `/opt/renata/debt.txt`. Valores só deste projeto, nunca copiados de outro:
    - `GITHUB_REPO` — `owner/nome`
