@@ -11,12 +11,24 @@ img { max-width: 100%; height: auto; }
 .page {
   display: flex;
   align-items: flex-start;
-  max-width: 1425px;
-  margin: 0 auto;
+  width: 100%;
+  position: relative;
+}
+.page::before {
+  content: "";
+  position: absolute;
+  top: 28px;
+  right: 0;
+  width: 770px;
+  height: 820px;
+  background: url("assets/watermark.png") right center / 770px auto no-repeat;
+  pointer-events: none;
 }
 .sidebar {
   width: 360px;
   flex: 0 0 360px;
+  position: relative;
+  z-index: 1;
   padding: 25px 28px 48px 36px;
 }
 .logo-link { display: block; margin-bottom: 18px; }
@@ -41,13 +53,12 @@ img { max-width: 100%; height: auto; }
 }
 .social a { display: inline-flex; color: #717c7d; }
 .social svg { width: 18px; height: 18px; fill: #717c7d; }
-.sidebar-rule { border: 0; border-top: 1px solid #d5d5d5; margin: 4px 0 22px; }
-.exel { width: 105px; display: block; margin: 0 auto; }
 .main {
   flex: 1;
   min-width: 0;
+  position: relative;
+  z-index: 1;
   padding: 25px 28px 56px 8px;
-  background: url("assets/watermark.png") right 40px / 720px no-repeat;
 }
 .mobile-header { display: none; }
 .site-footer { display: none; }
@@ -385,7 +396,14 @@ img { max-width: 100%; height: auto; }
     padding: 10px 14px;
   }
   .mobile-header img { height: 72px; width: auto; }
-  .main { padding: 16px; background-size: 100% auto; }
+  .page::before {
+    top: 8px;
+    width: 100%;
+    height: 78vw;
+    background-size: 100% auto;
+    background-position: right top;
+  }
+  .main { padding: 16px; }
   .home-split, .pair, .sched-row, .blog-card, .ig-grid { grid-template-columns: 1fr; }
   .quote.align-end { max-width: none; }
   .site-footer {
@@ -397,6 +415,5 @@ img { max-width: 100%; height: auto; }
     font-weight: 300;
     font-size: 15px;
   }
-  .site-footer img { width: 120px; margin-top: 8px; }
   .doctoralia { height: 640px; }
 }

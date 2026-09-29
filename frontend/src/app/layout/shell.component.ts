@@ -51,8 +51,6 @@ interface NavItem {
             <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3zm5 12.2c-.2.6-1.2 1.1-1.7 1.1-.4 0-.9.2-3.1-.7-2.6-1.1-4.2-3.8-4.3-4-.1-.2-1-1.3-1-2.5s.6-1.8.9-2 .6-.3.8-.3h.6c.2 0 .4 0 .6.5.2.6.8 2 .8 2.1.1.1 0 .3-.2.5l-.4.4c-.1.1-.2.3 0 .5.3.5 1 1.6 2.1 2.2.2.1.4.1.5-.1l.5-.6c.1-.2.3-.1.5-.1l2 .9c.2.1.3.2.4.3.1.4 0 .9-.2 1.3z" /></svg>
           </a>
         </div>
-        <hr class="sidebar-rule" />
-        <img class="exel" src="assets/exel.png" alt="Exel Digital" />
       </aside>
       <main class="main">
         <router-outlet></router-outlet>
@@ -61,8 +59,6 @@ interface NavItem {
     </div>
     <footer class="site-footer">
       <div><b>Copyright 2021 © Todos os Direitos Reservados.</b></div>
-      <div>Desenvolvido por:</div>
-      <img src="assets/exel.png" alt="Exel Digital" />
     </footer>
   `,
 })
