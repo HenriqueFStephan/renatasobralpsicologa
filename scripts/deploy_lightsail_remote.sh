@@ -12,6 +12,11 @@ tar -xzf /tmp/api.tgz -C /opt/renata
 /opt/renata/venv/bin/pip install -r /opt/renata/backend/requirements.txt
 mkdir -p /opt/renata/backend/data
 chown -R www-data:www-data /var/www/renata /opt/renata/backend/data
+if [ -f /opt/renata/debt.txt ]; then
+  chgrp www-data /opt/renata/debt.txt
+  chmod 640 /opt/renata/debt.txt
+fi
+chmod -R a+rX /opt/renata/venv /opt/renata/backend
 
 systemctl restart renata-api
 systemctl reload nginx
@@ -30,4 +35,6 @@ for _ in $(seq 1 30); do
 done
 
 echo "API health check failed" >&2
+systemctl status renata-api --no-pager || true
+journalctl -u renata-api -n 40 --no-pager || true
 exit 1

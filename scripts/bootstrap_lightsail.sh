@@ -26,7 +26,8 @@ GITHUB_REPO=
 GITHUB_STUDIO_TOKEN=
 STUDIO_ACCESS_TOKEN=
 EOF
-  chmod 600 /opt/renata/debt.txt
+  chgrp www-data /opt/renata/debt.txt
+  chmod 640 /opt/renata/debt.txt
 fi
 
 API_PORT=8000

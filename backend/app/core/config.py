@@ -13,9 +13,11 @@ ENV_FILE = BACKEND_DIR / ".env"
 
 
 def _apply_file(path: Path, override: bool) -> None:
-    if not path.is_file():
+    try:
+        text = path.read_text(encoding="utf-8")
+    except OSError:
         return
-    for raw in path.read_text(encoding="utf-8").splitlines():
+    for raw in text.splitlines():
         line = raw.strip()
         if not line or line.startswith("#") or "=" not in line:
             continue
