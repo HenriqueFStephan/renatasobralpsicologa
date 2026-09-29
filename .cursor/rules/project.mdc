@@ -1,0 +1,14 @@
+---
+description: Site da Dra. Renata Sobral — texto, HTTP e studio
+alwaysApply: true
+---
+
+# Renata Sobral
+
+Este é o site de Renata Sobral. O texto público vem do site no ar e não é inventado.
+
+HTTP só passa por `frontend/src/app/core/api.service.ts`.
+
+`/studio` fica fora do menu e do rodapé públicos.
+
+Issues do agente usam a etiqueta `solve`.

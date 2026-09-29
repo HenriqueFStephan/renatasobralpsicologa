@@ -1,0 +1,33 @@
+name: Cursor issue solver
+
+on:
+  issues:
+    types: [labeled]
+  issue_comment:
+    types: [created]
+
+jobs:
+  solve:
+    if: >
+      github.event.issue.pull_request == null &&
+      (
+        (github.event_name == 'issues' && github.event.label.name == 'solve') ||
+        (github.event_name == 'issue_comment' && startsWith(github.event.comment.body, '[CORRECTION]'))
+      )
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Launch Cursor cloud agent
+        env:
+          CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
+          GITHUB_EVENT_PAYLOAD: ${{ toJson(github.event) }}
+        run: |
+          npm install --prefix "$RUNNER_TEMP/cursor-sdk" @cursor/sdk
+          NODE_PATH="$RUNNER_TEMP/cursor-sdk/node_modules" node .github/scripts/solve-issue.mjs

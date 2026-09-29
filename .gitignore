@@ -1,0 +1,12 @@
+debt.txt
+backend/.env
+node_modules
+dist
+venv
+__pycache__
+*.pyc
+.angular
+frontend/src/environments/environment.prod.ts
+.idea
+.vscode
+*.log

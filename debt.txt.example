@@ -1,0 +1,6 @@
+# Copy to debt.txt at the repo root for local use.
+# On the server this file lives at /opt/renata/debt.txt and is not replaced by deploys.
+BLOCKWALL_KEY=
+GITHUB_REPO=
+GITHUB_STUDIO_TOKEN=
+STUDIO_ACCESS_TOKEN=
